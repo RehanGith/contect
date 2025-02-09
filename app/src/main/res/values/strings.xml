@@ -3,4 +3,5 @@
     <string name="name">Name</string>
     <string name="add_contact">Add Contact</string>
     <string name="buttom">buttom</string>
+    <string name="delete_icon">delete icon</string>
 </resources>
