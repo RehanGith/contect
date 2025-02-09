@@ -9,7 +9,6 @@
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Muhammad Rehan"
         android:layout_marginStart="15dp"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -18,14 +17,9 @@
         android:id="@+id/tvPhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0345-1234567"
         android:textSize="12sp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
-        bot
+        android:layout_marginBottom="15dp"
         />
-
-
-
-
 </LinearLayout>
