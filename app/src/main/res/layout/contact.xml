@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:textSize="20sp"
-        android:text="Muhammad Rehan"
+
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,6 @@
         android:textSize="12sp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
-        android:text="0228829"
         android:layout_marginBottom="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvName"
