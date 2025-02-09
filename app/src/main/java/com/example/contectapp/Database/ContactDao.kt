@@ -5,14 +5,15 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ContactDao {
     @Upsert
-    fun upsert(contact: Contact)
+    suspend fun upsert(contact: Contact)
     @Delete
-    fun delete(contact: Contact)
+    suspend fun delete(contact: Contact)
     @Query("SELECT * FROM contact")
-    fun getAllContacts(): LiveData<List<Contact>>
+    fun getAllContacts(): Flow<List<Contact>>
 
 }

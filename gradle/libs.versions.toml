@@ -11,7 +11,8 @@ activity = "1.10.0"
 constraintlayout = "2.2.0"
 room = "2.6.1"
 ksp = "1.9.20-1.0.13"
-
+lifecyle = "2.8.7"
+coroutine = "1.7.3"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -24,7 +25,9 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-room-compiler = {group = "androidx.room", name = "room-compiler", version.ref = "room"}
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room"}
 androidx-room-ktx = {group = "androidx.room", name = "room-ktx", version.ref = "room"}
-
+androidx-lifecyle-viewmodel = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecyle"}
+jetbrains-coroutine-kotlinx = {group = "org.jetbrains.kotlinx", name  = "kotlinx-coroutines-android", version.ref = "coroutine"}
+jetbrains-coroutine-core = {group = "org.jetbrains.kotlinx", name  = "kotlinx-coroutines-core", version.ref = "coroutine"}
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

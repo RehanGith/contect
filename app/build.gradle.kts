@@ -41,12 +41,15 @@ android {
 }
 
 dependencies {
-
     annotationProcessor(libs.androidx.room.compiler)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
 
+    implementation(libs.androidx.lifecyle.viewmodel)
+
+    implementation(libs.jetbrains.coroutine.core)
+    implementation(libs.jetbrains.coroutine.kotlinx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
