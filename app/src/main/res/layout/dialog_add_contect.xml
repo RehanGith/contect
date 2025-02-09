@@ -7,12 +7,15 @@
         android:id="@+id/etFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:hint="@string/name" />
     <EditText
         android:id="@+id/etPhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:hint="@string/name" />
+
     <Button
         android:id="@+id/btnAddContact"
         android:layout_width="match_parent"
