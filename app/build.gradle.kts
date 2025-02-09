@@ -1,11 +1,12 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.ksp)
 }
 
 android {
     namespace = "com.example.contectapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.contectapp"
@@ -36,6 +37,11 @@ android {
 }
 
 dependencies {
+
+    annotationProcessor(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.runtime)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
