@@ -12,10 +12,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.contectapp.Database.Contact
+import com.example.contectapp.Database.ContactDatabase
 import com.example.contectapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var db : ContactDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,6 +37,8 @@ class MainActivity : AppCompatActivity() {
         binding.btAdd.setOnClickListener {
             displayAddContactDialog()
         }
+        db = ContactDatabase(this)
+        db.getContactDao().upsert(Contact("Rehan", "12345"))
     }
 
     @SuppressLint("InflateParams")
