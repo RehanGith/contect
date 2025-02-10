@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 
 
 class ContactViewModel(private val app: Application, private val repo: ContactRepository): AndroidViewModel(app) {
+
     fun insertContact(contact: Contact) = viewModelScope.launch {
         repo.insertContact(contact)
     }

@@ -23,7 +23,6 @@ import com.example.contectapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var db : ContactDatabase
     private lateinit var contactViewModel : ContactViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,17 +30,20 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
+        initializeViewModel()
+        setupRecyclerView()
+        binding.btAdd.setOnClickListener {
+            displayAddContactDialog()
+        }
     }
 
-    fun initializeViewModel() {
+    private fun initializeViewModel() {
         val contactRepo = ContactRepository(ContactDatabase(this))
         val factory = ViewModelFactory(application, contactRepo)
         contactViewModel = ViewModelProvider(this, factory)[ContactViewModel::class.java]
 
     }
-    fun updateUI(contactList: List<Contact>?) {
+    private fun updateUI(contactList: List<Contact>?) {
         if(contactList != null) {
             if(contactList.isNotEmpty()) {
                 binding.rvContactsList.visibility = View.VISIBLE
@@ -79,7 +81,8 @@ class MainActivity : AppCompatActivity() {
             val name = dialogView.findViewById<EditText>(R.id.etFirstName).text.toString()
             val phone = dialogView.findViewById<EditText>(R.id.etPhoneNumber).text.toString()
             if (name.isNotEmpty() && phone.isNotEmpty()) {
-                Toast.makeText(this, "Name $name and Phone $phone", Toast.LENGTH_SHORT).show()
+                val contact = Contact(name , phone)
+                contactViewModel.insertContact(contact)
                 dialog.dismiss()
             } else {
                 Toast.makeText(this, "Name and Phone cannot be empty", Toast.LENGTH_SHORT).show()

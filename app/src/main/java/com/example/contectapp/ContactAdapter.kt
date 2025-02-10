@@ -14,6 +14,7 @@ class ContactAdapter: RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
     class ViewHolder(binding: ContactBinding): RecyclerView.ViewHolder(binding.root) {
         val name = binding.tvName
         val phone = binding.tvPhoneNumber
+        val delButton = binding.ivDelete
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(ContactBinding.inflate(LayoutInflater.from(parent.context), parent, false))
