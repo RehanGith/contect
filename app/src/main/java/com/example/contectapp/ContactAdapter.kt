@@ -4,10 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.contectapp.Database.Contact
 import com.example.contectapp.databinding.ContactBinding
 
 
-class ContactAdapter(val context: Context, private val contacts: ArrayList<String>) : RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
+class ContactAdapter(val context: Context, private val contacts: List<Contact>) : RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
     class ViewHolder(binding: ContactBinding): RecyclerView.ViewHolder(binding.root) {
         val name = binding.tvName
         val phone = binding.tvPhoneNumber
@@ -22,8 +23,8 @@ class ContactAdapter(val context: Context, private val contacts: ArrayList<Strin
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.name.text = contacts[position]
-        holder.phone.text = "0123456789"
+        val contact = contacts[position]
+
     }
 
 }

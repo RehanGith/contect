@@ -14,6 +14,6 @@ interface ContactDao {
     @Delete
     suspend fun delete(contact: Contact)
     @Query("SELECT * FROM contact")
-    fun getAllContacts(): Flow<List<Contact>>
+    fun getAllContacts(): LiveData<List<Contact>>
 
 }
