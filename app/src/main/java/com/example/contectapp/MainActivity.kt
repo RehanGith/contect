@@ -22,13 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding.rvContactsList.adapter = ContactAdapter(this, ContactViewModel.contacts)
-        binding.rvContactsList.layoutManager = LinearLayoutManager(this)
-        binding.rvContactsList.setHasFixedSize(true)
-        binding.rvContactsList.setItemViewCacheSize(10)
-        binding.btAdd.setOnClickListener {
-            displayAddContactDialog()
-        }
+
 
     }
 
