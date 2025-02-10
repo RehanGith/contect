@@ -3,6 +3,7 @@ package com.example.contectapp
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         binding.btAdd.setOnClickListener {
             displayAddContactDialog()
         }
+
     }
 
     private fun initializeViewModel() {
@@ -45,23 +47,22 @@ class MainActivity : AppCompatActivity() {
     }
     private fun updateUI(contactList: List<Contact>?) {
         if(contactList != null) {
-            if(contactList.isNotEmpty()) {
                 binding.rvContactsList.visibility = View.VISIBLE
-            } else {
-                binding.rvContactsList.visibility = View.GONE
-            }
+            Log.d("MainActivity", "Contact list size: ${contactList.size}")
+        } else {
+            Log.d("MainActivity", "Contact list is null")
         }
-
     }
     private fun setupRecyclerView() {
+        val contactAdapter = ContactAdapter()
         binding.rvContactsList.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = ContactAdapter()
+            adapter = contactAdapter
             setHasFixedSize(true)
         }
-        contactViewModel.getContacts().observe(this) {
-            (binding.rvContactsList.adapter as ContactAdapter).differ.submitList(it)
-            updateUI(it)
+        contactViewModel.getContacts().observe(this) { note ->
+            contactAdapter.differ.submitList(note)
+            updateUI(note)
         }
     }
     @SuppressLint("InflateParams")
