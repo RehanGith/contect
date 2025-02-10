@@ -11,21 +11,35 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.contectapp.Database.Contact
 import com.example.contectapp.Database.ContactDatabase
+import com.example.contectapp.Repository.ContactRepository
+import com.example.contectapp.ViewModel.ContactViewModel
+import com.example.contectapp.ViewModel.ViewModelFactory
 import com.example.contectapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var db : ContactDatabase
+    private lateinit var contactViewModel : ContactViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
     }
 
+    fun initializeViewModel() {
+        val contactRepo = ContactRepository(ContactDatabase(this))
+        val factory = ViewModelFactory(application, contactRepo)
+        contactViewModel = ViewModelProvider(this, factory)[ContactViewModel::class.java]
+
+    }
     @SuppressLint("InflateParams")
     private fun displayAddContactDialog() {
         val dialogView = LayoutInflater.from(this).inflate(

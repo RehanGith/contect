@@ -28,7 +28,7 @@ class ContactAdapter: RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
         }
 
     }
-    val differ = AsyncListDiffer(this, differCallBack)
+    private val differ = AsyncListDiffer(this, differCallBack)
     override fun getItemCount(): Int {
         return  differ.currentList.size
     }
