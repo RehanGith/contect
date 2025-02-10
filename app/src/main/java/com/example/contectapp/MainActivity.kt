@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -39,6 +40,27 @@ class MainActivity : AppCompatActivity() {
         val factory = ViewModelFactory(application, contactRepo)
         contactViewModel = ViewModelProvider(this, factory)[ContactViewModel::class.java]
 
+    }
+    fun updateUI(contactList: List<Contact>?) {
+        if(contactList != null) {
+            if(contactList.isNotEmpty()) {
+                binding.rvContactsList.visibility = View.VISIBLE
+            } else {
+                binding.rvContactsList.visibility = View.GONE
+            }
+        }
+
+    }
+    private fun setupRecyclerView() {
+        binding.rvContactsList.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = ContactAdapter()
+            setHasFixedSize(true)
+        }
+        contactViewModel.getContacts().observe(this) {
+            (binding.rvContactsList.adapter as ContactAdapter).differ.submitList(it)
+            updateUI(it)
+        }
     }
     @SuppressLint("InflateParams")
     private fun displayAddContactDialog() {
