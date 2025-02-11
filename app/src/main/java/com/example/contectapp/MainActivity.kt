@@ -67,7 +67,22 @@ class MainActivity : AppCompatActivity() , ContactAdapter.OnContactClickListener
         }
     }
     override fun onDeleteClick(contact: Contact) {
-        contactViewModel.deleteContact(contact)
+        showDialogForDelete(contact)
+    }
+    private fun showDialogForDelete(contact: Contact) {
+        AlertDialog.Builder(this)
+            .setTitle("Delete Contact")
+            .setMessage("Are you sure you want to delete this contact?")
+            .setPositiveButton("yes") { dialog, _ ->
+                contactViewModel.deleteContact(contact)
+                dialog.dismiss()
+            }
+            .setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+
+            }
+
+
     }
     @SuppressLint("InflateParams")
     private fun displayAddContactDialog() {
