@@ -22,7 +22,7 @@ import com.example.contectapp.ViewModel.ContactViewModel
 import com.example.contectapp.ViewModel.ViewModelFactory
 import com.example.contectapp.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() , ContactAdapter.OnContactClickListener{
     private lateinit var binding: ActivityMainBinding
     private lateinit var contactViewModel : ContactViewModel
 
@@ -53,8 +53,9 @@ class MainActivity : AppCompatActivity() {
             Log.d("MainActivity", "Contact list is null")
         }
     }
+
     private fun setupRecyclerView() {
-        val contactAdapter = ContactAdapter()
+        val contactAdapter = ContactAdapter(this)
         binding.rvContactsList.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = contactAdapter
@@ -64,6 +65,9 @@ class MainActivity : AppCompatActivity() {
             contactAdapter.differ.submitList(note)
             updateUI(note)
         }
+    }
+    override fun onDeleteClick(contact: Contact) {
+        contactViewModel.deleteContact(contact)
     }
     @SuppressLint("InflateParams")
     private fun displayAddContactDialog() {
