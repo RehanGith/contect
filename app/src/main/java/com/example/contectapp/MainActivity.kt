@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() , ContactAdapter.OnContactClickListener
             .setNegativeButton("No") { dialog, _ ->
                 dialog.dismiss()
 
-            }
+            }.create().show()
 
 
     }
